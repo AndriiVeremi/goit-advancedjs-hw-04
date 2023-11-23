@@ -15,17 +15,18 @@ refs.form.addEventListener('submit', handleSearch);
 
 const onImages = new SimpleLightbox('.js-gallery a', {
   captionDelay: 250,
+  captionsData: 'alt',
 });
 
-// let query = '';
+let currentQuery = '';
 let page = 1;
 
 async function handleSearch(e) {
   e.preventDefault();
+  clearPage();
   const query = refs.input.value.trim().toLowerCase();
 
   if (!query) {
-    clearPage();
     iziToast.show({
       title: 'Ops!',
       message: 'Enter something to search!',
@@ -34,10 +35,12 @@ async function handleSearch(e) {
     return;
   }
 
+  page = 1;
+
   try {
     const data = await getImage(query, page);
 
-    const allCollection = data.data.total;
+    const allCollection = data.data.totalHits;
     const collection = data.data.hits;
 
     if (allCollection === 0) {
@@ -55,7 +58,7 @@ async function handleSearch(e) {
       message: `Hooray! We found ${allCollection} images.`,
       position: 'topRight',
     });
-    
+
     onImages.refresh();
   } catch (error) {
     clearPage();
@@ -63,7 +66,14 @@ async function handleSearch(e) {
 }
 
 function clearPage() {
-  API.resetPage();
   refs.gallery.innerHTML = '';
-  refs.btnLoadMore.classList.add('is-hidden');
 }
+
+const scrollPage = () => {
+  const { height: cardHeight } =
+    imgContainer.firstElementChild.getBoundingClientRect();
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth',
+  });
+};

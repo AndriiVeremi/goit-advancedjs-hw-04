@@ -33,23 +33,17 @@ body {
   margin-bottom: 20px;
 }
 
-input {
+.input {
   padding: 10px;
-  width: 550px;
+  width: 500px;
   font-size: 20px;
-  border-radius: 20px;
+  border-radius: 15px;
 }
 
-button {
+.btn {
   width: 120px;
-  border-radius: 20px;
+  border-radius: 15px;
   font-size: 20px;
-}
-
-img {
-  display: block;
-  height: auto;
-  max-width: 100%;
 }
 
 .gallery {
@@ -60,15 +54,31 @@ img {
   justify-content: center;
 }
 
+.card-link {
+  width: 100%;
+  flex-basis: calc((100% - 60px) / 4);
+  transition: transform 250ms linear;
+  text-decoration: none;
+}
+
+.card-link:hover,
+.card-link:focus {
+  transform: scale(1.05);
+}
+
 .photo-card {
-   display: flex;
+  border: 2px solid #333;
+  border-radius: 20px;
+  display: flex;
   flex-direction: column;
-  background-color: #333333;
-  border-radius: 15px;
-  padding: 10px;
+  width: 100%;
+  height: 100%;
+  justify-content: space-evenly;
 }
 
 .card-img {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   display: block;
   width: 100%;
   height: 100%;
@@ -76,14 +86,15 @@ img {
 }
 
 .info {
-  width: 100%;
-  background-color: #d7e2d6;
+  background-color: #333;
   justify-content: center;
   align-items: center;
   gap: 5px;
   padding: 10px;
   font-size: 14px;
   display: flex;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .info-item {
@@ -95,13 +106,14 @@ img {
   height: 100%;
   text-align: center;
   background-color: transparent;
-  color: #524e4e;
+  color: #fff;
   margin: 0;
   padding: 10px;
 }
 
 b {
   margin-bottom: 7px;
+  color: antiquewhite;
 }
 
 .box-likes {
@@ -110,13 +122,13 @@ b {
   align-items: center;
 }
 
+.load-btn {
+  
+}
+
 .is-hidden {
   display: none;
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
-}
-
-ul {
-  list-style-type: none;
 }
