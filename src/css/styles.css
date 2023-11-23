@@ -1,4 +1,3 @@
-
 @import url('./reset.css');
 
 :root {
@@ -15,4 +14,26 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+.search-form {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 0 auto;
+  background-color: blueviolet;
+}
+
+input {
+  padding: 10px;
+  width: 550px;
+  font-size: 20px;
+  border-radius: 20px;
+}
+
+button {
+  width: 120px;
+  border-radius: 20px;
 }
