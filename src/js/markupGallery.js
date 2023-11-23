@@ -10,14 +10,14 @@ export default function markupGallery(data) {
         comments,
         downloads,
       }) => `
-        <a href="${largeImageURL}" class="card-link js-card-link">
-    <div class="photo-card">
-    <img src="${webformatURL}" alt="${tags}" loading="lazy" />
-    <div class="info">
+    <a href="${largeImageURL}" class="card-link js-card-link">
+     <div class="photo-card">
+      <img src="${webformatURL}" class="card-img"  alt="${tags}" loading="lazy" />
+       <div class="info">
         <p class="info-item">
             <b>Likes: ${likes}</b>
         </p>
-            <p class="info-item">
+        <p class="info-item">
         <b>Views: ${views}</b>
         </p>
         <p class="info-item">
