@@ -15,7 +15,12 @@
 }
 
 body {
-  background-image: url('../img/pixabay.webp');
+  background-image: linear-gradient(
+      to right,
+      rgb(101, 62, 108, 0.3),
+      rgba(101, 62, 108, 0.3)
+    ),
+    url('../img/pixabay.webp');
   background-size: 60px 50px;
   margin: 0;
 }
@@ -28,7 +33,6 @@ body {
   gap: 30px;
   margin: 0 auto;
   margin-bottom: 50px;
-  /* background: linear-gradient(#653e6c, #653e6c); */
   background: #653e6c;
 }
 
@@ -142,6 +146,11 @@ b {
   margin: 0 auto;
   display: block;
   margin-bottom: 30px;
+  border: none;
+}
+
+.load-btn:active {
+  scale: 0.9;
 }
 
 .load-btn.hidden,
@@ -177,5 +186,5 @@ b {
 
 .sub-title {
   font-size: 30px;
-   color: #653e6c;
+  color: #653e6c;
 }
