@@ -13,15 +13,15 @@ const refs = {
   logo: document.querySelector('.js-pixa'),
 };
 
+function showElement(element, isVisible) {
+  element.classList.toggle('hidden', !isVisible);
+}
+
 refs.form.addEventListener('submit', handleSearch);
 refs.loadBtn.addEventListener('click', handleLoadMore);
 
 showElement(refs.loadBtn, false);
 showElement(refs.logo, true);
-
-function showElement(element, isVisible) {
-  element.classList.toggle('hidden', !isVisible);
-}
 
 const onImages = new SimpleLightbox('.js-gallery a', {
   captionDelay: 250,
@@ -88,6 +88,7 @@ async function handleSearch(e) {
   } catch (err) {
     console.log(err);
     clearPage();
+    showElement(refs.logo, true);
     showElement(refs.loadBtn, false);
   }
 }
@@ -117,6 +118,7 @@ async function handleLoadMore(e) {
   } catch (err) {
     console.log(err);
     clearPage();
+    showElement(refs.logo, true);
   }
 }
 

@@ -5,10 +5,7 @@
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
-
   color: #242424;
-  /* background-color: rgba(255, 255, 255, 0.87); */
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -29,8 +26,8 @@ body {
   justify-content: center;
   gap: 30px;
   margin: 0 auto;
-  background-color: #333333;
   margin-bottom: 50px;
+  background: linear-gradient(#333333, #5b5b5b);
 }
 
 .input {
@@ -43,6 +40,7 @@ body {
 }
 
 .btn {
+  color: #333333;
   width: 120px;
   border-radius: 15px;
   font-size: 20px;
@@ -161,8 +159,8 @@ b {
   width: 700px;
   padding: 50px;
   background-color: #e9e7e7;
-    box-shadow: inset -2px -2px 8px rgba(0,0,0,.75),
-    inset 2px 2px 8px rgba(0,0,0,.75);
+  box-shadow: inset -2px -2px 8px rgba(0, 0, 0, 0.75),
+    inset 2px 2px 8px rgba(0, 0, 0, 0.75);
 }
 
 .logo {
@@ -172,8 +170,10 @@ b {
 .title {
   font-size: 24px;
   margin-bottom: 40px;
+  color: #615f5f;
 }
 
 .sub-title {
   font-size: 30px;
+   color: #615f5f;
 }
