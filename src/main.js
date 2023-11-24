@@ -10,10 +10,18 @@ const refs = {
   input: document.querySelector('input'),
   gallery: document.querySelector('.gallery'),
   loadBtn: document.querySelector('.js-load-btn'),
+  logo: document.querySelector('.js-pixa'),
 };
 
 refs.form.addEventListener('submit', handleSearch);
 refs.loadBtn.addEventListener('click', handleLoadMore);
+
+showElement(refs.loadBtn, false);
+showElement(refs.logo, true);
+
+function showElement(element, isVisible) {
+  element.classList.toggle('hidden', !isVisible);
+}
 
 const onImages = new SimpleLightbox('.js-gallery a', {
   captionDelay: 250,
@@ -26,7 +34,7 @@ let page = 1;
 async function handleSearch(e) {
   e.preventDefault();
   clearPage();
-  
+
   const query = refs.input.value.trim().toLowerCase();
 
   if (!query) {
@@ -64,16 +72,22 @@ async function handleSearch(e) {
       return;
     }
 
+    showElement(refs.logo, false);
+
     refs.gallery.insertAdjacentHTML('afterbegin', markupGallery(collection));
+    
     iziToast.show({
       title: 'Hey',
       message: `Hooray! We found ${allCollection} images.`,
       position: 'topRight',
     });
 
+     showElement(refs.loadBtn, true);
+
     onImages.refresh();
   } catch (error) {
     clearPage();
+    showElement(refs.loadBtn, false);
   }
 }
 
