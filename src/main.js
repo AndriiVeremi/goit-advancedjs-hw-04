@@ -48,8 +48,8 @@ async function handleSearch(e) {
 
   if (currentQuery === query) {
     iziToast.show({
-      title: 'Ops!',
-      message: 'Enter something!',
+      title: 'Sorry!',
+      message: 'Rewrite your requests, write something different.!',
       position: 'topRight',
     });
     return;
@@ -77,19 +77,19 @@ async function handleSearch(e) {
     refs.gallery.insertAdjacentHTML('afterbegin', markupGallery(collection));
 
     iziToast.show({
-      title: 'Hey',
-      message: `Hooray! We found ${allCollection} images.`,
+      title: 'Hooray!',
+      message: `We found ${allCollection} images.`,
       position: 'topRight',
     });
 
     showElement(refs.loadBtn, true);
-
     onImages.refresh();
+
   } catch (err) {
+
     console.log(err);
     clearPage();
     showElement(refs.logo, true);
-    showElement(refs.loadBtn, false);
   }
 }
 
@@ -115,7 +115,9 @@ async function handleLoadMore(e) {
     refs.gallery.insertAdjacentHTML('beforeend', markupGallery(collection));
     scrollPage();
     onImages.refresh();
+
   } catch (err) {
+
     console.log(err);
     clearPage();
     showElement(refs.logo, true);
