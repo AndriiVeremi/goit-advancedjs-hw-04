@@ -51,7 +51,6 @@ async function handleSearch(e) {
       message: 'Rewrite your requests, write something different.!',
       position: 'topRight',
     });
-    showElement(refs.loadBtn, false);
     return;
   }
 
