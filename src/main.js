@@ -52,6 +52,7 @@ async function handleSearch(e) {
       message: 'Rewrite your requests, write something different.!',
       position: 'topRight',
     });
+    showElement(refs.loadBtn, false);
     return;
   }
 
@@ -64,6 +65,8 @@ async function handleSearch(e) {
     const collection = data.data.hits;
 
     if (allCollection === 0) {
+     showElement(refs.loadBtn, false);
+     showElement(refs.logo, true);
       iziToast.show({
         title: 'Ops!',
         message: "We're sorry, but you've reached the end of search results.",
@@ -126,7 +129,7 @@ async function handleLoadMore(e) {
 
 function clearPage() {
   refs.gallery.innerHTML = '';
-  currentQuery = '';
+  // currentQuery = '';
   page = 1;
 }
 
