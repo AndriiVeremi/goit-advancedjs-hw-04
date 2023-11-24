@@ -28,7 +28,7 @@ body {
   gap: 30px;
   margin: 0 auto;
   margin-bottom: 50px;
-  background: linear-gradient(#333333, #5b5b5b);
+  background: linear-gradient(#653e6c, #653e6c);
 }
 
 .input {
@@ -41,7 +41,7 @@ body {
 }
 
 .btn {
-  color: #333333;
+  color: #653e6c;
   width: 120px;
   border-radius: 15px;
   font-size: 20px;
@@ -94,7 +94,7 @@ body {
 }
 
 .info {
-  background-color: #333;
+  background-color: #653e6c;
   justify-content: center;
   align-items: center;
   gap: 5px;
@@ -133,7 +133,7 @@ b {
 .load-btn {
   padding: 10px 20px;
   border-radius: 10px;
-  background-color: #333333;
+  background-color: #653e6c;
   color: #fff;
   font-size: 18px;
   margin: 0 auto;
@@ -156,7 +156,7 @@ b {
   margin: 0 auto;
   align-items: center;
   border-radius: 10px;
-  border: 1px solid #333;
+  border: 1px solid #653e6c;
   width: 700px;
   padding: 50px;
   background-color: #e9e7e7;
@@ -176,5 +176,5 @@ b {
 
 .sub-title {
   font-size: 30px;
-   color: #615f5f;
+   color: #653e6c;
 }
