@@ -33,7 +33,6 @@ let page = 1;
 
 async function handleSearch(e) {
   e.preventDefault();
-  clearPage();
 
   const query = refs.input.value.trim().toLowerCase();
 
@@ -58,6 +57,8 @@ async function handleSearch(e) {
 
   currentQuery = query;
 
+  clearPage();
+
   try {
     const data = await getImage(currentQuery, page);
 
@@ -65,8 +66,8 @@ async function handleSearch(e) {
     const collection = data.data.hits;
 
     if (allCollection === 0) {
-     showElement(refs.loadBtn, false);
-     showElement(refs.logo, true);
+      showElement(refs.loadBtn, false);
+      showElement(refs.logo, true);
       iziToast.show({
         title: 'Ops!',
         message: "We're sorry, but you've reached the end of search results.",
@@ -87,9 +88,7 @@ async function handleSearch(e) {
 
     showElement(refs.loadBtn, true);
     onImages.refresh();
-
   } catch (err) {
-
     console.log(err);
     clearPage();
     showElement(refs.logo, true);
@@ -118,9 +117,7 @@ async function handleLoadMore(e) {
     refs.gallery.insertAdjacentHTML('beforeend', markupGallery(collection));
     scrollPage();
     onImages.refresh();
-
   } catch (err) {
-
     console.log(err);
     clearPage();
     showElement(refs.logo, true);
