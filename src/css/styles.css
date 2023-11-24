@@ -28,7 +28,8 @@ body {
   gap: 30px;
   margin: 0 auto;
   margin-bottom: 50px;
-  background: linear-gradient(#653e6c, #653e6c);
+  /* background: linear-gradient(#653e6c, #653e6c); */
+  background: #653e6c;
 }
 
 .input {
@@ -63,10 +64,12 @@ body {
 }
 
 .card-link {
+  border-radius: 20px;
   width: 100%;
   flex-basis: calc((100% - 60px) / 4);
   transition: transform 250ms linear;
   text-decoration: none;
+  box-shadow: 0px 0px 5px rgb(35 33 35 / 85%), 0px 0px 5px rgb(35 33 35 / 85%);
 }
 
 .card-link:hover,
