@@ -46,14 +46,14 @@ async function handleSearch(e) {
     return;
   }
 
-   if ((currentQuery === query)) {
-     iziToast.show({
-       title: 'Ops!',
-       message: 'Enter something to search!',
-       position: 'topRight',
-     });
-     return;
-   }
+  if (currentQuery === query) {
+    iziToast.show({
+      title: 'Ops!',
+      message: 'Enter something!',
+      position: 'topRight',
+    });
+    return;
+  }
 
   currentQuery = query;
 
@@ -75,17 +75,18 @@ async function handleSearch(e) {
     showElement(refs.logo, false);
 
     refs.gallery.insertAdjacentHTML('afterbegin', markupGallery(collection));
-    
+
     iziToast.show({
       title: 'Hey',
       message: `Hooray! We found ${allCollection} images.`,
       position: 'topRight',
     });
 
-     showElement(refs.loadBtn, true);
+    showElement(refs.loadBtn, true);
 
     onImages.refresh();
-  } catch (error) {
+  } catch (err) {
+    console.log(err);
     clearPage();
     showElement(refs.loadBtn, false);
   }
@@ -93,10 +94,30 @@ async function handleSearch(e) {
 
 async function handleLoadMore(e) {
   e.preventDefault();
+
   page += 1;
-  const data = await getImage(currentQuery, page);
-  const collection = data.data.hits;
-  refs.gallery.insertAdjacentHTML('beforeend', markupGallery(collection));
+
+  try {
+    const data = await getImage(currentQuery, page);
+    const collection = data.data.hits;
+    const allCollection = data.data.totalHits;
+
+    if (!(page < Math.ceil(allCollection / 40))) {
+      iziToast.show({
+        message: "We're sorry, but you've reached the end of search results.",
+        position: 'topRight',
+      });
+      showElement(refs.loadBtn, false);
+      return;
+    }
+
+    refs.gallery.insertAdjacentHTML('beforeend', markupGallery(collection));
+    scrollPage();
+    onImages.refresh();
+  } catch (err) {
+    console.log(err);
+    clearPage();
+  }
 }
 
 function clearPage() {
@@ -105,11 +126,13 @@ function clearPage() {
   page = 1;
 }
 
-const scrollPage = () => {
-  const { height: cardHeight } =
-    imgContainer.firstElementChild.getBoundingClientRect();
+function scrollPage() {
+  const { height: cardHeight } = document
+    .querySelector('.gallery')
+    .firstElementChild.getBoundingClientRect();
+
   window.scrollBy({
     top: cardHeight * 2,
     behavior: 'smooth',
   });
-};
+}
