@@ -4,6 +4,8 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import getImage from './js/pixaAPI';
 import markupGallery from './js/markupGallery';
+import showElement from './js/showElement';
+import scrollPage from './js/scrollPage';
 
 const refs = {
   form: document.querySelector('#search-form'),
@@ -12,10 +14,6 @@ const refs = {
   loadBtn: document.querySelector('.js-load-btn'),
   logo: document.querySelector('.js-pixa'),
 };
-
-function showElement(element, isVisible) {
-  element.classList.toggle('hidden', !isVisible);
-}
 
 refs.form.addEventListener('submit', handleSearch);
 refs.loadBtn.addEventListener('click', handleLoadMore);
@@ -30,6 +28,11 @@ const onImages = new SimpleLightbox('.js-gallery a', {
 
 let currentQuery = '';
 let page = 1;
+
+function clearPage() {
+  refs.gallery.innerHTML = '';
+  page = 1;
+}
 
 async function handleSearch(e) {
   e.preventDefault();
@@ -110,7 +113,6 @@ async function handleLoadMore(e) {
         position: 'topRight',
       });
       showElement(refs.loadBtn, false);
-      // return;
     }
 
     refs.gallery.insertAdjacentHTML('beforeend', markupGallery(collection));
@@ -122,21 +124,3 @@ async function handleLoadMore(e) {
     showElement(refs.logo, true);
   }
 }
-
-function clearPage() {
-  refs.gallery.innerHTML = '';
-  page = 1;
-}
-
-function scrollPage() {
-  const { height: cardHeight } = document
-    .querySelector('.gallery')
-    .firstElementChild.getBoundingClientRect();
-
-  window.scrollBy({
-    top: cardHeight * 2,
-    behavior: 'smooth',
-  });
-}
-
-
