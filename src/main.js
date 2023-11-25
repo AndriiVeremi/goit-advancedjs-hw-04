@@ -33,7 +33,7 @@ let page = 1;
 
 async function handleSearch(e) {
   e.preventDefault();
-
+  showElement(refs.loadBtn, false);
   const query = refs.input.value.trim().toLowerCase();
 
   if (!query) {
@@ -110,7 +110,7 @@ async function handleLoadMore(e) {
         position: 'topRight',
       });
       showElement(refs.loadBtn, false);
-      return;
+      // return;
     }
 
     refs.gallery.insertAdjacentHTML('beforeend', markupGallery(collection));
@@ -125,7 +125,6 @@ async function handleLoadMore(e) {
 
 function clearPage() {
   refs.gallery.innerHTML = '';
-  // currentQuery = '';
   page = 1;
 }
 
@@ -139,3 +138,5 @@ function scrollPage() {
     behavior: 'smooth',
   });
 }
+
+
